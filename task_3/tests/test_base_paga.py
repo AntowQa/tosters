@@ -1,13 +1,13 @@
-from clients.mtt_client import MTTClient
+from clients.site_client import SiteClient
 from helpers.base_helper import get_all_pronouns, get_all_personal_pronouns, get_personal_pronouns_of_the_1st_person
 from hamcrest import assert_that
 
-mtt = MTTClient()
+site = SiteClient()
 
 
 def test_there_are_more_personal_pronouns_of_the_1st_person_than_other_personal_pronouns():
     # Получить html страницу
-    html_doc = mtt.get_start_page()
+    html_doc = site.get_start_page()
     # Получить все личные местоимения
     pronouns = get_all_pronouns(html_doc)
     all_personal_pronouns = get_all_personal_pronouns(pronouns)

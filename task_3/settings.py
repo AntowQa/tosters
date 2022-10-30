@@ -1,4 +1,4 @@
-MTT_URL = "https://www.mtt.ru/voicebox/"
+BASE_URL = ""
 HEADERS = {
     'User-Agent': 'Test'
 }
