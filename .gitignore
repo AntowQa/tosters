@@ -1,4 +1,7 @@
 __pycache__
+.idea
+task_1/.idea
+task_2/.idea
 task_3/.idea
 .pytest_cache
 venv
