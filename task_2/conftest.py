@@ -5,7 +5,6 @@ from selenium import webdriver
 from selene.support.shared import config
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
-from helpers.base_helper import get_css_files
 from settings import PATH_FILES_SITE
 
 
@@ -48,12 +47,16 @@ def browser_session(t_browser):
 def rename_file(request, iterate):
     def _rename_file(css_files):
         path = os.getcwd()
-        os.rename(f'{path}{PATH_FILES_SITE}/{css_files[iterate]}',
-                  f'{path}{PATH_FILES_SITE}/new{css_files[iterate]}')
+        for file in css_files:
+            if file != css_files[iterate]:
+                os.rename(f'{path}{PATH_FILES_SITE}/{file}',
+                          f'{path}{PATH_FILES_SITE}/new{file}')
 
         def _return_file_name():
-            os.rename(f'{path}{PATH_FILES_SITE}/new{css_files[iterate]}',
-                      f'{path}{PATH_FILES_SITE}/{css_files[iterate]}')
+            for file in css_files:
+                if file != css_files[iterate]:
+                    os.rename(f'{path}{PATH_FILES_SITE}/new{file}',
+                              f'{path}{PATH_FILES_SITE}/{file}')
 
         request.addfinalizer(_return_file_name)
 
