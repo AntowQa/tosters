@@ -32,7 +32,7 @@ def custom_driver(t_browser):
 
 @pytest.fixture(scope='session')
 def t_browser(request):
-    """  Test browser. Params: [chrome, opera, firefox].  """
+    """  Test browser. Params: [chrome].  """
     return request.config.getoption('--browser')
 
 
@@ -45,6 +45,7 @@ def browser_session(t_browser):
 
 @pytest.fixture()
 def rename_file(request, iterate):
+    """  Fixture that renames all css files except one """
     def _rename_file(css_files):
         path = os.getcwd()
         for file in css_files:
